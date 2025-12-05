@@ -11,7 +11,10 @@ This is a modern chess application that provides a complete chess gaming experie
 ### Backend
 - **Framework**: ASP.NET Core
 - **Language**: C#
-- **Architecture**: Clean Architecture (Domain, Application, API layers)
+- **Architecture**: Domain-Driven Design (DDD) with Clean Architecture
+  - **Domain Layer**: Core business logic and entities
+  - **Application Layer**: Business services and use cases
+  - **API Layer**: RESTful endpoints and controllers
 
 ### Frontend
 - **Framework**: React
@@ -103,6 +106,34 @@ The application will be available at `http://localhost:5173` (default Vite port)
 - RESTful API for chess operations
 - Interactive React-based user interface
 - Routing between home and chess game pages
+
+## 🏗️ Architecture & Design Rules
+
+This project follows **Domain-Driven Design (DDD)** principles with strict design rules:
+
+### Core Principles
+- **Separation of Concerns**: Each layer has distinct responsibilities
+- **Dependency Rule**: Dependencies flow inward (API → Application → Domain)
+- **Domain Layer Independence**: The Domain layer has no external dependencies
+- **Business Logic in Domain**: Core chess rules and logic reside in the Domain layer
+
+### Design Rules to Follow
+1. **Domain Layer** must remain pure and independent
+   - No dependencies on Application or API layers
+   - Contains entities, value objects, and domain logic
+   - Implements chess game rules and validations
+
+2. **Application Layer** orchestrates business workflows
+   - Depends only on Domain layer
+   - Contains services and use cases
+   - Handles application-specific logic
+
+3. **API Layer** exposes functionality via HTTP
+   - Depends on Application and Domain layers
+   - Contains controllers and DTOs
+   - Handles HTTP concerns (routing, serialization, validation)
+
+All contributions must adhere to these architectural principles and design rules.
 
 ## 🌐 API Endpoints
 
